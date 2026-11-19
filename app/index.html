@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cover Snap Pro — GTA-style cover maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Cover Snap <span>Pro</span></div>
+  <p class="tagline">Any photo &rarr; GTA-style cover art, offline, in seconds.</p>
+  <div class="top-actions">
+    <button id="undoBtn" type="button" title="Undo (Ctrl+Z)">&#8617; Undo</button>
+    <button id="redoBtn" type="button" title="Redo (Ctrl+Y)">&#8618; Redo</button>
+  </div>
+</header>
+<main class="studio">
+  <aside class="panel left">
+    <section>
+      <h2>1 &middot; Photos</h2>
+      <label class="file-btn">Add photos from your machine
+        <input id="photoInput" type="file" accept="image/*" multiple>
+      </label>
+      <div id="tray" class="tray"></div>
+      <button id="fillAllBtn" type="button">Fill every panel with the selected photo</button>
+      <p class="hint">Two sample photos are loaded already. Click a photo, then a panel, to place it. Drag a panel to move its photo, scroll to zoom.</p>
+    </section>
+    <section>
+      <h2>2 &middot; Layout</h2>
+      <div id="layoutRow" class="pickrow"></div>
+    </section>
+    <section>
+      <h2>3 &middot; Grade</h2>
+      <div id="gradeRow" class="pickrow"></div>
+    </section>
+    <section>
+      <h2>4 &middot; Size</h2>
+      <div id="sizeRow" class="pickrow"></div>
+    </section>
+  </aside>
+  <section class="stage">
+    <canvas id="preview" width="1080" height="1080" aria-label="The cover preview"></canvas>
+    <p id="selectedLabel" role="status"></p>
+    <div id="panelStrip" class="pickrow strip"></div>
+    <label class="zoom">Zoom selected panel
+      <input id="zoomRange" type="range" min="0" max="100" value="30">
+    </label>
+  </section>
+  <aside class="panel right">
+    <section>
+      <h2>Caption</h2>
+      <label>Title
+        <input id="titleInput" type="text" maxlength="40" value="Sunset Heist">
+      </label>
+      <label>Subtitle
+        <input id="subtitleInput" type="text" maxlength="40" value="one last ride">
+      </label>
+      <label>Badge ribbon
+        <input id="badgeInput" type="text" maxlength="20" value="Launch Week">
+      </label>
+      <label>Heat
+        <input id="heatInput" type="range" min="0" max="5" step="1" value="4">
+        <span id="heatVal">4 / 5</span>
+      </label>
+    </section>
+    <section>
+      <h2>Effects</h2>
+      <label class="check"><input id="grainToggle" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignetteToggle" type="checkbox" checked> Vignette</label>
+      <label class="check"><input id="halftoneToggle" type="checkbox" checked> Halftone title</label>
+    </section>
+    <section>
+      <h2>Export</h2>
+      <button id="exportBtn" type="button">Export PNG &mdash; current size</button>
+      <button id="exportAllBtn" type="button">Export all three sizes</button>
+      <p id="status" role="status"></p>
+    </section>
+    <p class="fine">Photos never leave this machine. No Rockstar artwork, logos or fonts &mdash; Anton &amp; Pacifico under the SIL Open Font License.</p>
+  </aside>
+</main>
+<script type="module" src="./src/editor.js"></script>
+</body>
+</html>
